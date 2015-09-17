@@ -5,14 +5,14 @@
   Include:
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", '1', true, :id => "ratings_#{rating}"
+    = check_box_tag "ratings[#{rating}]", '1', @desired_ratings.include?(rating), :id => "ratings_#{rating}"
   = submit_tag 'Refresh' , :id => 'ratings_submit'
 
 %table#movies
   %thead
     %tr
-      %th{ :class => if params[:sort] == 'title' then 'hilite' end } <a id="movie_header" href=movies?sort=title> Movie Title
-      %th{ :class => if params[:sort] == 'rating' then 'hilite' end } <a id="release_date_header" href=movies?sort=rating > Rating 
+      %th{ :class => if session[:sort] == 'title' then 'hilite' end } <a id="movie_header" href=movies?sort=title> Movie Title
+      %th{ :class => if session[:sort] == 'rating' then 'hilite' end } <a id="release_date_header" href=movies?sort=rating > Rating 
       %th Release Date
       %th More Info
   %tbody

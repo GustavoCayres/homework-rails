@@ -6,14 +6,19 @@ class MoviesController < ApplicationController
     # will render app/views/movies/show.<extension> by default
   end
 
-  def index
-    sort = params[:sort]  
-    @all_ratings = Movie.ratings
-    desired_ratings = @all_ratings
-    if params[:ratings] != nil
-      desired_ratings = params[:ratings].keys
+  def index 
+    if params[:sort] != nil
+      session[:sort] = params[:sort]
     end
-    @movies = Movie.find(:all, :order => sort, :conditions => {:rating => desired_ratings})
+    if params[:ratings] != nil
+      session[:ratings] = params[:ratings]
+    end
+    @all_ratings = Movie.ratings
+    @desired_ratings = @all_ratings
+    if session[:ratings] != nil
+      @desired_ratings = session[:ratings].keys
+    end
+    @movies = Movie.find(:all, :order => session[:sort], :conditions => {:rating => @desired_ratings})
   end
 
   def new
