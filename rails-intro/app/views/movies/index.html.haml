@@ -11,7 +11,7 @@
 %table#movies
   %thead
     %tr
-      %th{ :class => if session[:sort] == 'title' then 'hilite' end } <a id="movie_header" href=movies?sort=title> Movie Title
+      %th{ :class => if session[:sort] == 'title' then 'hilite' end } <a id="title_header" href=movies?sort=title> Movie Title
       %th{ :class => if session[:sort] == 'rating' then 'hilite' end } <a id="release_date_header" href=movies?sort=rating > Rating 
       %th Release Date
       %th More Info
