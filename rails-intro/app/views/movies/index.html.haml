@@ -4,8 +4,8 @@
 %table#movies
   %thead
     %tr
-      %th Movie Title
-      %th Rating
+      %th{ :class => if params[:sort] == 'title' then 'hilite' end } <a id="movie_header" href=movies?sort=title> Movie Title
+      %th{ :class => if params[:sort] == 'rating' then 'hilite' end } <a id="release_date_header" href=movies?sort=rating > Rating 
       %th Release Date
       %th More Info
   %tbody
